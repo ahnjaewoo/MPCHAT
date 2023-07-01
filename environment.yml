@@ -1,0 +1,28 @@
+name: mpchat
+channels:
+  - defaults
+dependencies:
+  - python=3.7.10
+  - pip=21.0.1
+  - cudatoolkit=10.1
+  - pytorch::pytorch=1.7.1
+  - torchvision=0.8.2
+  - torchaudio=0.7.2
+  - pip:
+    - tqdm==4.64.0
+    - nltk==3.7
+    - transformers==4.17.0
+    - protobuf==3.20.0
+    - gallery-dl==1.21.2
+    - tensorflow-hub==0.7.0
+    - tensorflow==2.0.0
+    - pillow==6.1.0
+    - praw==7.5.0
+    - sentence-transformers==2.2.0
+    - emoji==1.7.0
+    - redditcleaner==1.1.2
+    - tensorboardx==2.5
+    - tensorboard==2.0.2
+    - timm==0.4.9
+    - ipython=7.34.0
+    - ftfy==6.1.1
