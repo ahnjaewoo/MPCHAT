@@ -7,9 +7,9 @@ import requests
 
 from PIL import Image
 from tqdm import tqdm
-from pathlib import Path
 
-def save_image(id2image_url, args):
+def save_image(id2image_url, args, mode):
+    assert mode in ['dialog', 'persona']
     for image_id, image_url in tqdm(id2image_url.items(), ncols=50):
         fname = f"{image_id}_{image_url.split('/')[-1]}"
         request_trial = 0
@@ -35,7 +35,10 @@ def save_image(id2image_url, args):
                             int(round(d * scale)) for d in (image_width, image_height)
                         )
                         pil_image = pil_image.resize((new_width, new_height))
-                    pil_image.save(os.path.join(args.save_dialog_image_directory, fname))
+                    if mode == 'dialog':
+                        pil_image.save(os.path.join(args.save_dialog_image_directory, fname))
+                    else:
+                        pil_image.save(os.path.join(args.save_persona_image_directory, fname))
                     break
             except:
                 print('Something wrong...')
@@ -48,8 +51,6 @@ def save_image(id2image_url, args):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--split", default=0, type=int)
-    parser.add_argument("--num_splits", default=1, type=int)
     parser.add_argument("--max_trial", default=5, type=int)
     parser.add_argument("--dialog_image_url_directory", default=None, required=True, type=str)
     parser.add_argument("--persona_image_url_directory", default=None, required=True, type=str)
@@ -67,8 +68,11 @@ def main():
     with open(args.persona_image_url_directory, 'r') as fp:
         id2persona_image_url = json.load(fp)
 
-    save_image(id2dialog_image_url, args)
-    save_image(id2persona_image_url, args)
+    os.makedirs(args.save_dialog_image_directory, exist_ok=True)
+    os.makedirs(args.save_persona_image_directory, exist_ok=True)
+
+    save_image(id2dialog_image_url, args, 'dialog')
+    save_image(id2persona_image_url, args, 'persona')
 
     print('Good Job Computer!')
 

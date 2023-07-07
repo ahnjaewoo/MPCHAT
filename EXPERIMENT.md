@@ -4,9 +4,9 @@
 ```bash
 python main_nrp.py \
   --model_type "clip-clip" \
-  --dialog_data_dir "/dialog/data/dir" \
-  --dialog_image_data_dir "/dialog/image/dir" \
-  --persona_image_data_dir "/persona/image/dir" \
+  --dialog_data_dir "." \
+  --dialog_image_data_dir "./images/dialog/" \
+  --persona_image_data_dir "./images/persona/" \
   --output_dir "outputs/clip-clip/nrp/full_inputs" \
   --seed 202 \
   --sum_persona_images \
@@ -27,9 +27,9 @@ python main_nrp.py \
 ```bash
 python main_nrp.py \
   --model_type "clip-sbert" \
-  --dialog_data_dir "/dialog/data/dir" \
-  --dialog_image_data_dir "/dialog/image/dir" \
-  --persona_image_data_dir "/persona/image/dir" \
+  --dialog_data_dir "." \
+  --dialog_image_data_dir "./images/dialog/" \
+  --persona_image_data_dir "./images/persona/" \
   --output_dir "outputs/clip-sbert/nrp/full_inputs" \
   --seed 202 \
   --freeze_image_encoder \
@@ -54,9 +54,9 @@ python main_nrp.py \
 ```bash
 python main_gpp.py \
   --model_type "clip-clip" \
-  --dialog_data_dir "/dialog/data/dir" \
-  --dialog_image_data_dir "/dialog/image/dir" \
-  --persona_image_data_dir "/persona/image/dir" \
+  --dialog_data_dir "." \
+  --dialog_image_data_dir "./images/dialog/" \
+  --persona_image_data_dir "./images/persona/" \
   --output_dir "outputs/clip-clip/gpp-context/full_inputs" \
   --seed 202 \
   --sum_persona_images \
@@ -77,9 +77,9 @@ python main_gpp.py \
 ```bash
 python main_gpp.py \
   --model_type "clip-clip" \
-  --dialog_data_dir "/dialog/data/dir" \
-  --dialog_image_data_dir "/dialog/image/dir" \
-  --persona_image_data_dir "/persona/image/dir" \
+  --dialog_data_dir "." \
+  --dialog_image_data_dir "./images/dialog/" \
+  --persona_image_data_dir "./images/persona/" \
   --output_dir "outputs/clip-clip/gpp-response/full_inputs" \
   --seed 202 \
   --sum_persona_images \
@@ -101,9 +101,9 @@ python main_gpp.py \
 ```bash
 python main_gpp.py \
   --model_type "clip-sbert" \
-  --dialog_data_dir "/dialog/data/dir" \
-  --dialog_image_data_dir "/dialog/image/dir" \
-  --persona_image_data_dir "/persona/image/dir" \
+  --dialog_data_dir "." \
+  --dialog_image_data_dir "./images/dialog/" \
+  --persona_image_data_dir "./images/persona/" \
   --output_dir "outputs/clip-sbert/gpp-context/full_inputs" \
   --seed 202 \
   --freeze_image_encoder \
@@ -126,9 +126,9 @@ python main_gpp.py \
 ```bash
 python main_gpp.py \
   --model_type "clip-sbert" \
-  --dialog_data_dir "/dialog/data/dir" \
-  --dialog_image_data_dir "/dialog/image/dir" \
-  --persona_image_data_dir "/persona/image/dir" \
+  --dialog_data_dir "." \
+  --dialog_image_data_dir "./images/dialog/" \
+  --persona_image_data_dir "./images/persona/" \
   --output_dir "outputs/clip-sbert/gpp-response/full_inputs" \
   --seed 202 \
   --freeze_image_encoder \
@@ -154,9 +154,9 @@ python main_gpp.py \
 ```bash
 python main_si.py \
   --model_type "clip-clip" \
-  --dialog_data_dir "/dialog/data/dir" \
-  --dialog_image_data_dir "/dialog/image/dir" \
-  --persona_image_data_dir "/persona/image/dir" \
+  --dialog_data_dir "." \
+  --dialog_image_data_dir "./images/dialog/" \
+  --persona_image_data_dir "./images/persona/" \
   --output_dir "outputs/clip-clip/si/full_inputs" \
   --seed 202 \
   --sum_persona_images \
@@ -177,9 +177,9 @@ python main_si.py \
 ```bash
 python main_si.py \
   --model_type "clip-sbert" \
-  --dialog_data_dir "/dialog/data/dir" \
-  --dialog_image_data_dir "/dialog/image/dir" \
-  --persona_image_data_dir "/persona/image/dir" \
+  --dialog_data_dir "." \
+  --dialog_image_data_dir "./images/dialog/" \
+  --persona_image_data_dir "./images/persona/" \
   --output_dir "outputs/clip-sbert/si/full_inputs" \
   --seed 202 \
   --freeze_image_encoder \

@@ -24,5 +24,5 @@ dependencies:
     - tensorboardx==2.5
     - tensorboard==2.0.2
     - timm==0.4.9
-    - ipython=7.34.0
+    - ipython==7.34.0
     - ftfy==6.1.1

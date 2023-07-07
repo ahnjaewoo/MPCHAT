@@ -2,7 +2,7 @@
 
 Welcome! 👋🏻\
 This is the official repository of our ACL 2023 paper: \
-**[MPCHAT: Towards Multimodal Persona-Grounded Conversation.](https://arxiv.org/abs/2305.17388)** [[Poster](https://assets.underline.io/lecture/76685/poster_document/9ad3a8c5490d8f2ebba767b5c6efca71.pdf)]
+**[MPCHAT: Towards Multimodal Persona-Grounded Conversation.](https://arxiv.org/abs/2305.17388)** [[Poster](assets/acl2023_mpchat_poster.pdf)] [[Slides](assets/acl2023_mpchat_slides.pdf)]
 
 ![dialogue illustration](assets/cover.png)
 
@@ -37,8 +37,8 @@ Please check [DATASET.md](DATASET.md) for descriptions of structure and attribut
 python preprocess/download_images.py \
   --dialog_image_url_directory "./dialog_image_urls.json" \
   --persona_image_url_directory "./persona_image_urls.json" \
-  --save_dialog_image_directory "/dialog/image/dir/" \
-  --save_persona_image_directory "/persona/image/dir/" \
+  --save_dialog_image_directory "./images/dialog/" \
+  --save_persona_image_directory "./images/persona/"
 ```
 or instead, by using the [redcaps-downloader tool](https://github.com/redcaps-dataset/redcaps-downloader).
 

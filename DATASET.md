@@ -61,7 +61,13 @@ A dialogue has the following structure:
                     "title": "from feline to fashion: my journey training a cat supermodel",
                     "direct_url": "https://i.redd.it/0qBk1ej.jpg",
                     "file_name": "jg9ml1_0qBk1ej.jpg",
-                    "label_overall": "(strong) E" ## response strongly grounded on the persona element
+                    "label_overall": "(strong) E",
+                    #################################
+                    ## (strong) E: response strongly entailed by (=grounded on) the persona element - entailment score = 3/3
+                    ## E: response entailed by the persona element - entailment score = 2/3
+                    ## I: response irrelevant to the persona element - entailment score = 1/3
+                    ## (strong) I: response strongly irrelevant to persona element - entailment score = 0/3
+                    #################################
                     "label_per_worker": [ ## three workers labeled it as entailed (=1)
                         [
                             "A2NSS746CFCT4N",
@@ -241,6 +247,16 @@ Please see below for a description of each attribute in the dataset:
 
 attribute | type | description
 --- | ---  | ---
+`subreddit` | str | subreddit of post
+`messages` | list of str | dialogue between multiple authors
+`message_ids` | list of str | post (or comment) id of each utterance
+`main_author` | str | main author with multimodal persona info
+`authors` | list of str | author info of each utterance
+`created_utcs` | str | UTC epoch when post (or comment) was submitted
+`has_image` | bool | whether post has image or not
+`direct_url` | str | direct url of post image
+`file_name` | str | saved file name of post image (format: {post_id}_{direct_url.split('/')[-1]})
+`all_personas` | list of dict | main author's all persona elements
 `gpp_grounded_persona` | list of dict | grounding persona element of each utterance, only provided in main author's turn
 `gpp_candidate_personas` | list of list of dict | main author's candidate (max 4) persona elements, only provided in main author's turn and only if `gpp_grounded_persona` exists in the turn
 `gpp_candidate_authors_candidate_personas` | list of list of dict | 100 candidate persona elements, only provided in main author's turn and only if `gpp_grounded_persona` exists in the turn
@@ -343,5 +359,15 @@ Please see below for a description of each attribute in the dataset:
 
 attribute | type | description
 --- | ---  | ---
+`subreddit` | str | subreddit of post
+`messages` | list of str | dialogue between multiple authors
+`message_ids` | list of str | post (or comment) id of each utterance
+`main_author` | str | main author with multimodal persona info
+`authors` | list of str | author info of each utterance
+`created_utcs` | str | UTC epoch when post (or comment) was submitted
+`has_image` | bool | whether post has image or not
+`direct_url` | str | direct url of post image
+`file_name` | str | saved file name of post image (format: {post_id}_{direct_url.split('/')[-1]})
+`all_personas` | list of dict | main author's all persona elements
 `si_main_author_candidate_personas` | list of dict | main author's candidate (max 5) persona elements
 `si_candidate_authors_candidate_personas` | list of list of dict | 100 candidate authors' persona elements
