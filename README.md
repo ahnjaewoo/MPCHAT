@@ -2,7 +2,7 @@
 
 Welcome! 👋🏻\
 This is the official repository of our ACL 2023 paper: \
-**[MPCHAT: Towards Multimodal Persona-Grounded Conversation.](https://arxiv.org/abs/2305.17388)** [[Poster](assets/acl2023_mpchat_poster.pdf)] [[Slides](assets/acl2023_mpchat_slides.pdf)]
+**[MPCHAT: Towards Multimodal Persona-Grounded Conversation.](https://aclanthology.org/2023.acl-long.189/)** [[Poster](assets/acl2023_mpchat_poster.pdf)] [[Slides](assets/acl2023_mpchat_slides.pdf)]
 
 ![dialogue illustration](assets/cover.png)
 
