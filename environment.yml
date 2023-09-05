@@ -11,7 +11,7 @@ dependencies:
   - pip:
     - tqdm==4.64.0
     - nltk==3.7
-    - transformers==4.17.0
+    - transformers==4.18.0
     - protobuf==3.20.0
     - gallery-dl==1.21.2
     - tensorflow-hub==0.7.0

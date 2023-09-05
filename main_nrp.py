@@ -1,4 +1,6 @@
 import os
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1, 2, 3"
 
 import json
 import glob
@@ -6,6 +8,7 @@ import logging
 import argparse
 
 import torch
+import torch.nn
 from utils.misc import (
     set_seed,
 )
@@ -81,13 +84,19 @@ def main():
         device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
         args.n_gpu = torch.cuda.device_count()
     else:  # Initializes the distributed backend which will take care of sychronizing nodes/GPUs
-        raise NotImplementedError
+        import torch.distributed as dist
+        dist.init_process_group('gloo', init_method='file:///tmp/mpchat_distributed.txt', rank=0, world_size=1)
+
+        gpu_ids = list(range(torch.cuda.device_count()))
+        device = torch.device("cuda", gpu_ids[0])
+        args.n_gpu = gpu_ids.__len__()
+
     args.device = device
 
     logging.basicConfig(format = '%(asctime)s - %(levelname)s - %(name)s - %(message)s',
                         datefmt = '%m/%d/%Y %H:%M:%S', level = logging.INFO if args.local_rank in [-1, 0] else logging.WARN)
     logger.warning("Process rank: %s, device: %s, n_gpu: %s, distributed training: %s, 16-bits training: %s",
-                   args.local_rank, device, args.n_gpu, bool(args.local_rank != -1), args.fp16)
+                   args.local_rank, args.device, args.n_gpu, bool(args.local_rank != -1), args.fp16)
 
     # set seed
     set_seed(args.seed, args.n_gpu)
@@ -105,6 +114,12 @@ def main():
 
     # Prepare model
     model = model_class(args, clip_processor)
+
+    # DataParallel
+    if args.local_rank != -1:
+        logger.info("DataParallel with %d GPUs", torch.cuda.device_count())
+        model = torch.nn.DataParallel(model)
+
     if recover_args['last_checkpoint_dir'] is not None or args.model_name_or_path != '': # recovery
         model_logging = model.load_state_dict(torch.load(os.path.join(args.model_name_or_path, 'pytorch_model.bin')))
         logger.info(f"{model_logging}")
